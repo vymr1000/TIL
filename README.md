@@ -1,4 +1,4 @@
-# Today I Learned(TIL) 
+# Today I Learned (T I L) 
 
 ## Java
-* [static 기초](https://github.com/nuseehr/TIL/JAVA/static-basic.md)
+* [static](https://github.com/nuseehr/TIL/blob/master/JAVA/static-basic.md)
