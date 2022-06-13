@@ -43,3 +43,45 @@ String은 가장 많이 사용되는 데이터 타입 중 하나이다. 그렇�
 ### Thread Safe
 
 객체가 불변이면 멀티 스레드 환경에서도 값이 바뀔 위험이 없기 때문에, 자연스럽게 Thread Safe한 특성을 갖게 되고, 동기화와 관련된 위험 요소에서 벗어날 수 있다. 여러 스레드에서 동시에 접근해도 별다른 문제가 없다.또한 String의 경우 한 스레드에서 값을 바꾸면, 해당 객체의 값을 수정하는 것이 아니라 새로운 객체를 String Pool에 생성한다. 따라서 Thread Safe하다고 볼 수 있다.
+
+> String 클래스는 문자열 연산이 적고 조회가 많을 때 멀티스레드 환경에 적합하다.
+> 
+
+<br/><br/>
+
+### **String이 불변이라 비효율적인점 (’+’연산자가 동작하는 방식)**
+
+```java
+String str1 = "Coffee";
+String str2 = str1 + "And Donut";
+```
+
+Immutable이라 비효율적인 경우도 있다. String을 연결하는 concatenate 연산에서 immutable이기 때문에 문자열 A에 문자열 B를 더할 때 A에 B를 바로 덧붙이는 것이 아니라 새로운 문자열 객체를 C를 만들고 거기에 A와 B를 더한 결과를 담아야 한다. 다시 말해, `str2`는 `str1` 객체를 변경하는 것이 아니라, **새로운 객체를 생성한다**. String 객체는 **immutable**(변경 불가능)이므로 객체를 변경할 수 없으므로 새로운 객체를 생성한다. 이처럼 String 객체에 + 연산을 하면, 새로운 객체를 생성하고 또 소멸시키는 과정에서 비용이 발생한다. + 연산에 대해 버전에 따른 재정의가 존재하는데, 
+
+> Java 1.5 이전에는 StringBuffer 의 append
+> Java 1.5 이후에는 StringBuilder 의 append로 재정의하였으며
+> Java 1.9 이후에는 [StringConcatFactory](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/invoke/StringConcatFactory.html) 를 통해 concat 연산 자체를 추상화하였다.
+
+<br/><br/>
+
+### 가변 객체인 StringBuffer, StringBuilder
+
+이 두 클래스는 `AbstractStringBuilder`를 상속받으며 String과 달리 **mutable**(가변)의 성격을 갖고 있다. 즉, 기존의 문자열을 변경하고자 할 때 `append()` 메서드를 사용하여, 객체를 새롭게 생성하지 않고 기존의 문자열을 변경할 수 있다. String의 합연산(concat)은 AbstactStringBuilder를 구현한 인스턴스를 생성하여 `append()`를 호출시키기 때문에, **StringBuffer 와 StringBuilder의** `append()` **메서드보다 성능이 떨어진다.** StringBuilder, StringBuffer는 동기화를 지원하는지 아닌지에 따라서 특성이 구분된다.
+
+> String은 불변, StringBuffer, StringBuilder는 가변이다. 
+> StringBuffer, StringBuilder는 동기화 지원여부에 따라 구분된다.
+ 
+
+**StringBuffer, StringBuilder 특징에 대해 조금 더 자세히 알아보자** 
+
+<br/>
+
+### StringBuffer는 동기화(Synchronized)를 지원한다
+
+동기화란 스레드 A와 스레드B가 한 객체를 작업중일 때 A가 값을 바꿔버리면 B가 엉뚱한 값으로 작업을 시도할 수 있다. 여러 스레드가 한 자원을 사용하려고 할 때 다른 스레드의 접근을 막아 데이터 무결성을 보장해주는 것을 동기화라고 한다. 다른 스레드의 접근을 막는 동기화를 지원하니 여러 스레드(멀티 스레드)가 작업하기에 매우 안전한 환경이 만들어진다. 그래서 동기화를 지원한다는 말은 멀티스레드 환경을 지원한다는 말과 같다고 볼 수 있다.
+
+<br/>
+
+### StringBuilder는 non-Synchronized 동기화를 지원하지 않는다.
+
+동기화를 지원하지 않기 때문에 단일스레드 환경에서 사용해야 안전하다. 단일스레드 환경에서는 Buffer보다 속도가 빠르다.
