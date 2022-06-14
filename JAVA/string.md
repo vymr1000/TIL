@@ -82,6 +82,6 @@ Immutable이라 비효율적인 경우도 있다. String을 연결하는 concate
 
 <br/>
 
-### StringBuilder는 non-Synchronized 동기화를 지원하지 않는다.
+### StringBuilder는 non-Synchronized. 즉, 동기화를 지원하지 않는다.
 
 동기화를 지원하지 않기 때문에 단일스레드 환경에서 사용해야 안전하다. 단일스레드 환경에서는 Buffer보다 속도가 빠르다.
