@@ -78,11 +78,11 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
 ```java
 public static void main(String[] args) {
-      CustomHashSet<String> customHashSet = new CustomHashSet<>();
+      InstrumentedHashSet<String> instrumentedHashSet = new InstrumentedHashSet<>();
       List<String> test = Arrays.asList("알파", "베타", "감가");
-      customHashSet.addAll(test);
+      instrumentedHashSet.addAll(test);
 
-      System.out.println(customHashSet.getAddCount());
+      System.out.println(instrumentedHashSet.getAddCount());
 }
 
 /*********** 출력 결과 ***********
