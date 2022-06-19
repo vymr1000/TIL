@@ -1,4 +1,6 @@
-## equals 메소드
+# Object 클래스의 equals, hashCode 메소드
+
+## 1. equals 메소드
 
 String 문자열의 비교는 `==` 이나 `equals()` 두가지로 비교가 가능하다. Java 객체의 **동등성** 혹은 **동일성** 비교를 위한 연산이라고 할 수 있는데 자세히 알아보자.
 
@@ -69,7 +71,7 @@ public class Student {
         }
 
         Student stnt = (Student) obj;
-				// 학번이 같으면 같은 학생.
+        // 학번이 같으면 같은 학생.
         return this.studentId.equals(stnt.studentId);
     }
 }
@@ -87,7 +89,7 @@ System.out.println(student01.equals(student03)); // true
 
 <br/><br/>
 
-## hashCode 메소드
+## 2. hashCode 메소드
 
 `hashCode()` 메소드는 어떤 객체를 대표하는 해시값을 32비트 정수로 리턴한다.
 
@@ -175,7 +177,7 @@ String 클래스에서 `hashCode()` 메소드를 오버라이딩하여 재정의
 
 ### hashCode 메소드 재정의의 예 (Student 클래스)
 
-Student 클래스에서 `equals()` 메소드를 재정의한것과 같이 `hashCode()` 메소드를 재정의해본다. 그전에 `hashCode()` 메소드를 재정의 하지 않았을때 **논리적으로 같은** 객체에 구분하지 못하는 문제를 먼저 확인해보자
+Student 클래스에서 `equals()` 메소드를 재정의한것과 같이 `hashCode()` 메소드를 재정의해본다. 그전에 `hashCode()` 메소드를 재정의 하지 않았을때 **논리적으로 같은** 객체에 구분하지 못하는 문제를 먼저 확인해보자.
 
 ```java
 public class Main {
@@ -191,13 +193,14 @@ public class Main {
 
         /*
         출력 결과는 A+일까?
-        hashCode를 재정의 하지 않았기 때문에 null을 리턴한다.
+        hashCode메소드를 재정의하지 않았기 때문에 null을 리턴한다.
+        put에서 생성된 객체와 get에서 생성된 객체가 다르기 때문이다.
         */		
     }
 }
 ```
 
-출력결과는 주석에 덧붙인 것처럼 `null`을 리턴한다. 논리적으로 같은 두 객체는 사실 물리적으로 다른 객체이므로 다른 hashCode를 가지기 때문이다. 이러한 문제를 해결하기 위해 Object 클래스의 `hashCode()` 메소드를 재정의하여 애플리케이션에서 두 객체가 어떤 상황일때 논리적으로 같은 객체인지를 직접 정의한다. Student 클래스에서는 학번이 같으면 같은 학생으로 보고 두 객체를 동일하다고 판단한다고 가정해본다.
+출력결과는 주석에 덧붙인 것처럼 `null`을 리턴한다. 논리적으로 같다고 생각한 두 객체는 사실 물리적으로 다른 객체이므로 다른 hashCode를 가지기 때문이다. 이러한 문제를 해결하기 위해 Object 클래스의 `hashCode()` 메소드를 재정의하여 애플리케이션에서 두 객체가 사용자가 정의한 상황일때 논리적으로 같은 객체인 것으로 직접 정의한다. Student 클래스에서는 학번이 같으면 같은 학생으로 보고 두 객체를 동일하다고 판단한다고 가정해본다.
 
 ```java
     // 위에서 정의했던 Student 클래스에서 hashCode 메소드를 추가한다.
