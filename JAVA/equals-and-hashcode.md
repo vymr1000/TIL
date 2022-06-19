@@ -1,4 +1,6 @@
-### equals & hashCode
+## equals 메소드
+
+String 문자열의 비교는 `==` 이나 `equals()` 두가지로 비교가 가능하다. Java 객체의 **동등성** 혹은 **동일성** 비교를 위한 연산이라고 할 수 있는데 자세히 알아보자.
 
 ```java
 String str1 = "Coffee"; // String Literal1
@@ -38,7 +40,7 @@ public boolean equals(Object obj) {
 }
 ```
 
-Object 클래스의 `equals()` 메소드는 `==` 연산으로 **단순히 두 객체가 동일한 객체인지를 비교**하고 있다. 하지만 String 클래스를 Object를 상속받은 클래스들은 실제로 객체속의 주소값을 일일히 비교하는 것이 아니라 **논리적**으로 동일한지를 파악하는 경우가 더 많을 것이다. 이런 경우 메소드 재정의(Override)를 통해 사용자 의도에 맞게 `equals()`를 재정의 한다.
+Object 클래스의 `equals()` 메소드는 `==` 연산으로 **단순히 두 객체가 동일한 객체인지(물리적으로 같은 객체)를 비교**하고 있다. 하지만 String 클래스를 Object를 상속받은 클래스들은 실제로 객체속의 주소값을 일일히 비교하는 것이 아니라 **논리적**으로 동일한지를 파악하는 경우가 더 많을 것이다. 이런 경우 메소드 재정의(Override)를 통해 사용자 의도에 맞게 `equals()`를 재정의 한다.
 
 <br/>
 
@@ -56,7 +58,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    // Overrding
+    @Override
     public boolean equals(Object obj) {
         if(obj == this) {
             return true;
@@ -67,10 +69,8 @@ public class Student {
         }
 
         Student stnt = (Student) obj;
-
-        return this.studentId.equals(stnt.studentId) &&
-                this.firstName.equals(stnt.firstName) &&
-                this.lastName.equals(stnt.lastName);
+				// 학번이 같으면 같은 학생.
+        return this.studentId.equals(stnt.studentId);
     }
 }
 ```
@@ -82,12 +82,12 @@ Student student03 = student01;
 System.out.println(student01.equals(student02)); // false
 System.out.println(student01.equals(student03)); // true
 ```
-무조건 생성된 객체의 주소값을 통해 비교하는 것이 아니라 Object 클래스의 equals() 메소드를 재정의함으로서 Student 클래스 객체의 Id, 성, 이름이 동일하면 동일한 객체로 비교연산이 가능하도록 하였다.
+무조건 생성된 객체의 주소값을 통해 비교하는 것이 아니라 Object 클래스의 `equals()` 메소드를 재정의함으로서 Student 클래스 객체의 Id(학번)이 동일하면 동일한 객체로 비교연산이 가능하도록 하였다.
 
 
 <br/><br/>
 
-### hashCode
+## hashCode 메소드
 
 `hashCode()` 메소드는 어떤 객체를 대표하는 해시값을 32비트 정수로 리턴한다.
 
@@ -104,6 +104,9 @@ System.out.println(student01.equals(student03)); // true
 <br/>
 
 ### String 클래스에서 **hashCode() 작동 방식 이해**
+
+Object 클래스의 `equals()` 메소드처럼 `hashCode()` 메소드 또한 **객체의 주소를 기반으로한 해시코드값을 리턴**하고 있다. 두 Java 객체의 **동일성**을 비교하기 위한 함수라고 할 수 있다.
+ 
 
 간단히 말해 `hashCode()`는 해시 알고리즘에 의해 생성된 32비트 정수 값을 리턴한다. Java 8 기준 String 클래스의 `hashCode()` 함수 구현은 아래와 같다. 
 
@@ -129,7 +132,7 @@ public int hashCode() {
 5. 31을 곱해주는 이유는 퍼포먼스 측면에서 이점이 있기 때문이다. Effective Java에서는 31인 이유를 아래와 같이 설명한다.
 
 
-> 💡 왜 31을 곱해주는가?
+> 💡 왜 31을 곱해주는가?    
 > 31은 소수이면서 홀수이기 때문에 선택된 값이다. 만일 그 값이 짝수였고 곱셈 결과가 오버플로되었다면 정보는 사라졌을 것이다. 2로 곱하는 것은 비트를 왼쪽으로 shift하는 것과 같기 때문이다. 소수를 사용하는 이점은 그다지 분명하지 않지만 전통적으로 널리 사용된다. 31의 좋은 점은 곱셈을 시프트와 뺄셈의 조합으로 바꾸면 더 좋은 성능을 낼 수 있다는 것이다(31 * i는 (i << 5) - i 와 같다). 최신 VM은 이런 최적화를 자동으로 실행한다.
 
 
@@ -167,3 +170,45 @@ str4 hashCode(): 2106086
 ```
 
 String 클래스에서 `hashCode()` 메소드를 오버라이딩하여 재정의한 것의 의도처럼 동일한 문자열 값을 가진다면 리턴하는 hashCode값은 같다.
+
+<br/>
+
+### hashCode 메소드 재정의의 예 (Student 클래스)
+
+Student 클래스에서 `equals()` 메소드를 재정의한것과 같이 `hashCode()` 메소드를 재정의해본다. 그전에 `hashCode()` 메소드를 재정의 하지 않았을때 **논리적으로 같은** 객체에 구분하지 못하는 문제를 먼저 확인해보자
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // HashMap 선언, 학생과 학점을 key, value로 갖는다.
+        Map<Student, String> m1 = new HashMap<>();
+
+        // 객체를 생성한다. 학번: 10, 이름: Jennie Kim, 학점: A+
+        m1.put(new Student("10", "Jennie", "Kim"), "A+");
+
+        // 김제니 학생의 학점을 조회하기 위해 맵에서 get 함수를 이용해본다.
+        System.out.println(m1.get(new Student("10", "Jennie", "Kim")));
+
+        /*
+        출력 결과는 A+일까?
+        hashCode를 재정의 하지 않았기 때문에 null을 리턴한다.
+        */		
+    }
+}
+```
+
+출력결과는 주석에 덧붙인 것처럼 `null`을 리턴한다. 논리적으로 같은 두 객체는 사실 물리적으로 다른 객체이므로 다른 hashCode를 가지기 때문이다. 이러한 문제를 해결하기 위해 Object 클래스의 `hashCode()` 메소드를 재정의하여 애플리케이션에서 두 객체가 어떤 상황일때 논리적으로 같은 객체인지를 직접 정의한다. Student 클래스에서는 학번이 같으면 같은 학생으로 보고 두 객체를 동일하다고 판단한다고 가정해본다.
+
+```java
+    // 위에서 정의했던 Student 클래스에서 hashCode 메소드를 추가한다.
+    @Override
+    public int hashCode() {
+        // 학번이 같으면 같은 학생.
+        int h = Integer.parseInt(studentId);
+        return h;
+    }
+```
+
+위처럼 Student 클래스에 hashCode 메소드를 재정의하고 나면, hashCode값으로 논리적같은 두 객체를 판단할 수 있게되고 hashMap에서 정상적으로 원하는 객체의 값을 불러올 수 있게 된다.
+
+<br/> <br/>
