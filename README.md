@@ -9,4 +9,4 @@
 * [final - final은 불변을 보장할까](https://github.com/nuseehr/TIL/blob/master/JAVA/final.md)
 
 ## OOP
-* [SOLID- 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
+* [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
