@@ -7,6 +7,7 @@
 * [equals & hashCode - Object 클래스 기본이 되는 메소드](https://github.com/nuseehr/TIL/blob/master/JAVA/equals-and-hashcode.md)
 * [clone - 객체를 clone한다는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/object-clone.md)
 * [final - final은 불변을 보장할까](https://github.com/nuseehr/TIL/blob/master/JAVA/final.md)
+* [final - 예외처리](https://github.com/nuseehr/TIL/blob/master/JAVA/exception.md)
 
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
