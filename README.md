@@ -8,6 +8,7 @@
 * [clone - 객체를 clone한다는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/object-clone.md)
 * [final - final은 불변을 보장할까](https://github.com/nuseehr/TIL/blob/master/JAVA/final.md)
 * [exception - 예외처리](https://github.com/nuseehr/TIL/blob/master/JAVA/exception.md)
+* [exception - 주의할 점](https://github.com/nuseehr/TIL/blob/master/JAVA/exception-advanced.md)
 
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
