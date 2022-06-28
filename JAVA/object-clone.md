@@ -32,25 +32,26 @@ System.out.println(System.identityHashCode(stnt.getSubjects()));
 System.out.println(System.identityHashCode(copyOfStnt.getSubjects()));
 
 /***********
- 출력결과
+출력결과
 [Network, Data Stucture, OS]
 [Network, Data Stucture, OS]
 747464370
 747464370
- -> 원본 데이터(창성동) 수정이 일어남. 같은 배열을 참조한다 (문제가 되는 부분)
- -> 값을 가리키는 포인터를 복사하는 것이기 때문
+-> 원본 데이터(창성동) 수정이 일어남. 같은 배열을 참조한다 (문제가 되는 부분)
+-> 값을 가리키는 포인터를 복사하는 것이기 때문이다 (Shallow Copy)
  ************/
 
 ```
+
 <br/>
 
 ### 복사 생성자
 
-복사 생성자는 같은 클래스의 다른 객체를 사용하여 객체를 복사하는 생성자이다. 여러 필드가 있는 복잡한 개체를 복사하거나 기존 개체의 전체 복사본을 만들 때 유용하다.
+복사 생성자는 같은 클래스의 다른 객체를 사용하여 객체를 복사하는 생성자이다. 여러 필드가 있는 복잡한 개체를 복사하거나 기존 개체의 전체 복사본을 만들 때 유용하다. `Cloneable` 및 `CloneNotSupportedException` 이 사라지기 때문에 인터페이스 구현 및 예외 처리를 고려하지 않아도 된다는 장점이 있다.
 
 ```java
 	
-public class Student implements Cloneable {
+public class Student {
     private String studentId;
     private List<String> subjects;
 
@@ -69,6 +70,8 @@ public class Student implements Cloneable {
 ```
 
 ```java
+// Main.java
+
 // subject 배열 선언
 List<String> subjects = new ArrayList<String>(Arrays.asList("Network", "Data Stucture"));
 
@@ -99,6 +102,6 @@ System.out.println(System.identityHashCode(copyConstructor.getSubjects()));
 [Network, Data Stucture, OS]
 1018547642
 1456208737
--> 원본 데이터에 영향가지 않는다.
+-> 원본 데이터에 영향가지 않는다. (Deep Copy) 
 ************/
 ```
