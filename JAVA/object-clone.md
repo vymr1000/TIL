@@ -37,7 +37,7 @@ System.out.println(System.identityHashCode(copyOfStnt.getSubjects()));
 [Network, Data Stucture, OS]
 747464370
 747464370
--> 원본 데이터(창성동) 수정이 일어남. 같은 배열을 참조한다 (문제가 되는 부분)
+-> 원본 데이터(OS) 수정이 일어남. 같은 배열을 참조한다 (문제가 되는 부분)
 -> 값을 가리키는 포인터를 복사하는 것이기 때문이다 (Shallow Copy)
  ************/
 

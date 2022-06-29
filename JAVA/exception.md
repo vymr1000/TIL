@@ -103,7 +103,7 @@ static class Repository {
 ```java
 // 체크 예외를 밖으로 던지는 코드
 public void callThrow() throws Exception {
-		repository.call();
+    repository.call();
 }
 ```
 
