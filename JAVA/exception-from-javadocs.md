@@ -12,7 +12,7 @@
 
 메소드가 예외를 throw한 후 런타임 시스템은 이를 처리할 무언가를 찾으려고 시도한다. 예외를 처리할 수 있는 "무언가" 집합은 오류가 발생한 메소드에 도달하기 위해 호출된 메소드의 정렬된 목록입니다. 메소드 목록을 `call stack`이라고 한다.
 
-런타임 시스템은 예외를 처리할 수 있는 코드 블록이 포함된 메소드에 대해 **call stack**을 검색한다. 이 코드 블록을 **exception handler**라고 한다. 탐색은 **오류가 발생한 메서드에서 시작**하여 메소드가 호출된 역순으로 **call stack**을 통해 진행된다. 적절한 핸들러가 발견되면 런타임 시스템은 예외를 핸들러에 전달한다. throw된 예외 객체(Exception object)의 타입이 핸들러가 처리할 수 있는 타입과 일치하는 경우 예외 핸들러가 적절한 것으로 간주된다.
+런타임 시스템은 예외를 처리할 수 있는 코드 블록이 포함된 메소드에 대해 **call stack**을 검색한다. 이 코드 블록을 **exception handler**라고 한다. 탐색은 **오류가 발생한 메소드에서 시작**하여 메소드가 호출된 역순으로 **call stack**을 통해 진행된다. 적절한 핸들러가 발견되면 런타임 시스템은 예외를 핸들러에 전달한다. throw된 예외 객체(Exception object)의 타입이 핸들러가 처리할 수 있는 타입과 일치하는 경우 예외 핸들러가 적절한 것으로 간주된다.
 
 선택된 예외 핸들러는 예외를 catch한다고 한다. 다음 그림과 같이 런타임 시스템이 적절한 예외 핸들러를 찾지 않고 **call stack**의 모든 메소드를 철저하게 탐색하면 런타임 시스템(및 결과적으로 프로그램)이 종료된다.
 
@@ -102,7 +102,7 @@ public class ListOfNumbers {
 
 <br/>
 
-굵게 표시된 첫 번째 줄은 생성자에 대한 호출이다. 생성자는 파일의 출력 스트림을 초기화한다. 파일을 열 수 없는 경우 생성자는 `IOException`을 throw한다. 두 번째 굵게 표시된 줄은 ArrayList 클래스의 get 메서드에 대한 호출로, 인덱스의 범위를 벗어나는 경우`IndexOutOfBoundsException`을 throw한다. `ListOfNumbers` 클래스를 컴파일하려고 하면 컴파일러는 FileWriter 생성자가 throw한 예외에 대한 오류 메시지를 출력한다. 그러나 get에서 발생한 예외에 대한 오류 메시지는 표시하지 않는. 그 이유는 생성자에서 던진 예외인 `IOException`은 체크 예외이고 get 메소드에서 던진 `IndexOutOfBoundsException`은 언체크 예외이기 때문입니다. 이제 ListOfNumbers 클래스와 이 클래스 내에서 예외가 throw될 수 있는 위치에 익숙해졌으므로 이러한 예외를 catch하고 처리하는 예외 핸들러를 작성할 준비가 되었다.
+굵게 표시된 첫 번째 줄은 생성자에 대한 호출이다. 생성자는 파일의 출력 스트림을 초기화한다. 파일을 열 수 없는 경우 생성자는 `IOException`을 throw한다. 두 번째 굵게 표시된 줄은 ArrayList 클래스의 get 메소드에 대한 호출로, 인덱스의 범위를 벗어나는 경우`IndexOutOfBoundsException`을 throw한다. `ListOfNumbers` 클래스를 컴파일하려고 하면 컴파일러는 FileWriter 생성자가 throw한 예외에 대한 오류 메시지를 출력한다. 그러나 get에서 발생한 예외에 대한 오류 메시지는 표시하지 않는. 그 이유는 생성자에서 던진 예외인 `IOException`은 체크 예외이고 get 메소드에서 던진 `IndexOutOfBoundsException`은 언체크 예외이기 때문입니다. 이제 ListOfNumbers 클래스와 이 클래스 내에서 예외가 throw될 수 있는 위치에 익숙해졌으므로 이러한 예외를 catch하고 처리하는 예외 핸들러를 작성할 준비가 되었다.
 
 <br/>
 
@@ -116,7 +116,7 @@ try {
 } catch and finally blocks..
 ```
 
-`ListOfNumbers` 클래스에서 writeList 메소드에 대한 예외 핸들러를 생성하려면 writeList 메소드의 예외 발생 문을 try 블록으로 감싼다. 이 작업을 수행하는 방법은 여러 가지가 있다. 예외를 발생시킬 수 있는 코드의 각 줄을 자체 try 블록에 넣고 각각에 대해 별도의 예외 처리기를 제공할 수 있다. 또는 단일 try 블록 내에 모든 writeList 코드를 넣고 여러 핸들러를 연결할 수 있다. 다음 목록은 문제의 코드가 매우 짧기 때문에 전체 메서드에 대해 하나의 try 블록을 사용한다. try 블록 내에서 예외가 발생하면 해당 예외는 연결된 예외 핸들러에 의해 처리된다. 예외 핸들러를 try 블록과 연결하려면 그 뒤에 catch 블록을 넣어야 한다. 
+`ListOfNumbers` 클래스에서 writeList 메소드에 대한 예외 핸들러를 생성하려면 writeList 메소드의 예외 발생 문을 try 블록으로 감싼다. 이 작업을 수행하는 방법은 여러 가지가 있다. 예외를 발생시킬 수 있는 코드의 각 줄을 자체 try 블록에 넣고 각각에 대해 별도의 예외 처리기를 제공할 수 있다. 또는 단일 try 블록 내에 모든 writeList 코드를 넣고 여러 핸들러를 연결할 수 있다. 다음 목록은 문제의 코드가 매우 짧기 때문에 전체 메소드에 대해 하나의 try 블록을 사용한다. try 블록 내에서 예외가 발생하면 해당 예외는 연결된 예외 핸들러에 의해 처리된다. 예외 핸들러를 try 블록과 연결하려면 그 뒤에 catch 블록을 넣어야 한다. 
 
 ```java
 private List<Integer> list;
@@ -171,13 +171,13 @@ finally 블록은 try 블록이 종료될 때 항상 실행된다. 이렇게 하
 > 참고: try 또는 catch 코드가 실행되는 동안 JVM이 종료되면 이런 상황에서는 finally 블록이 실행되지 않을 수 있다.
 > 
 
-예제코드에서 writeList 메서드의 try 블록은 `PrintWriter`를 호출한다. **주의할 점은 프로그램이 writeList 메서드를 종료하기 전에 해당 `stream`을 `close` 해야한다는 것이다.** 이것은 writeList의 try 블록이 세 가지 방법 중 하나로 종료될 수 있기 때문에 finally이 아니라면 다소 복잡하게 고려해야 한다.
+예제코드에서 writeList 메소드의 try 블록은 `PrintWriter`를 호출한다. **주의할 점은 프로그램이 writeList 메소드를 종료하기 전에 해당 `stream`을 `close` 해야한다는 것이다.** 이것은 writeList의 try 블록이 세 가지 방법 중 하나로 종료될 수 있기 때문에 finally이 아니라면 다소 복잡하게 고려해야 한다.
 
 1. `new FileWriter()` 생성자 호출 구문이 실패하고 `IOException`이 발생한다.
 2. `list.get(i)` 호출 구문이 실패하고 `IndexOutOfBoundsException`이 발생한다.
 3. 모든 것이 성공하고 try 블록이 정상적으로 종료된다.
 
-런타임 시스템은 try 블록 내에서 일어나는 일에 관계없이 항상 finally 블록 내에서 명령문을 실행한다. 따라서 cleanup을 수행하기에 완벽한 장소이다. writeList 메서드에 대한 다음 finally 블록은 PrintWriter 및 FileWriter를 정리한 다음 닫는다.
+런타임 시스템은 try 블록 내에서 일어나는 일에 관계없이 항상 finally 블록 내에서 명령문을 실행한다. 따라서 cleanup을 수행하기에 완벽한 장소이다. writeList 메소드에 대한 다음 finally 블록은 PrintWriter 및 FileWriter를 정리한 다음 닫는다.
 
 ```java
 finally {
@@ -195,7 +195,7 @@ finally {
 
 ```
 
-> 중요: 파일을 닫거나 리소스를 복구할 때 finally 블록 대신 **try-with-resources** 문을 사용하라. 다음 예제에서는 try-with-resources 문을 사용하여 writeList 메서드에 대한 PrintWriter 및 FileWriter를 정리하고 닫는 것을 확인해보자.
+> 중요: 파일을 닫거나 리소스를 복구할 때 finally 블록 대신 **try-with-resources** 문을 사용하라. 다음 예제에서는 try-with-resources 문을 사용하여 writeList 메소드에 대한 PrintWriter 및 FileWriter를 정리하고 닫는 것을 확인해보자.
 > 
 
 <br/>
@@ -214,7 +214,7 @@ static String readFirstLineFromFile(String path) throws IOException {
 	}
 ```
 
-위 예에서 `try-with-resources`문에 선언된 리소스는 `FileReader` 및 `BufferedReader`이다. 이러한 리소스의 선언문은 try 키워드 바로 뒤에 괄호 안에 나타난다. Java SE 7 이상에서 `FileReader` 및 `BufferedReader` 클래스는 `java.lang.AutoCloseable` 인터페이스를 구현한 클래스이다. `FileReader` 및 `BufferedReader` 객체는 `AutoCloseable` 을 구현한 객체이면서 `try-with-resource` 에서 선언되기 때문에 try 문이 정상적으로 완료되거나 갑자기 완료되는지 여부에 관계없이 닫힌다 (BufferedReader.readLine 메서드가 IOException을 발생시킨 결과). Java SE 7 이전에는 finally 블록을 사용하여 try 문이 정상적으로 완료되었는지 갑자기 완료되었는지 여부에 관계없이 리소스를 close 선언을 통해 닫아야 했다. 아래 코드는 try-with-resources 문 대신 finally 블록을 사용하는 예제이다.
+위 예에서 `try-with-resources`문에 선언된 리소스는 `FileReader` 및 `BufferedReader`이다. 이러한 리소스의 선언문은 try 키워드 바로 뒤에 괄호 안에 나타난다. Java SE 7 이상에서 `FileReader` 및 `BufferedReader` 클래스는 `java.lang.AutoCloseable` 인터페이스를 구현한 클래스이다. `FileReader` 및 `BufferedReader` 객체는 `AutoCloseable` 을 구현한 객체이면서 `try-with-resource` 에서 선언되기 때문에 try 문이 정상적으로 완료되거나 갑자기 완료되는지 여부에 관계없이 닫힌다 (BufferedReader.readLine 메소드가 IOException을 발생시킨 결과). Java SE 7 이전에는 finally 블록을 사용하여 try 문이 정상적으로 완료되었는지 갑자기 완료되었는지 여부에 관계없이 리소스를 close 선언을 통해 닫아야 했다. 아래 코드는 try-with-resources 문 대신 finally 블록을 사용하는 예제이다.
 
 ```java
 // The try-with-resources 구문 대신 finally를 사용한 예제
@@ -231,4 +231,4 @@ static String readFirstLineFromFileWithFinallyBlock(String path) throws IOExcept
 }
 ```
 
-이 예제에서 리소스 누수가 발생할 수 있다. 프로그램은 리소스 사용이 끝났을 때 리소스의 메모리를 회수하기 위해 가비지 컬렉터(GC)에 의존하는 것 이상을 수행해야 한다. 또한 프로그램은 일반적으로 리소스의 close 메소드를 호출하여 리소스를 운영체제로 다시 해제(release)해야 한다. 그러나 GC가 리소스를 회수하기 전에 프로그램이 이 작업을 수행하지 못하면 리소스를 해제하는 데 필요한 정보가 손실(lost)된다. 운영체제에서 여전히 사용 중인 것으로 간주되며 리소스 누수가 발생한 것이다. 위 예제코드에서 readLine 메소드가 예외를 throw하고 finally 블록의 `br.close()`문에서 예외가 발생하면 FileReader가 누수된 것입니다. 따라서 이런 일이 발생하지 않으면서 프로그램의 리소스를 완전히 닫으려면 finally 블록 대신 `try-with-resources` 문을 사용하여야 한다. readLine 메소드와 close 메소드가 모두 예외를 throw하는 경우 `readFirstLineFromFileWithFinallyBlock` **메소드는 finally 블록에서 throw된 예외를 throw한다.** try 블록에서 throw된 예외가 억제(suppressed)됩니다. 반대로, `readFirstLineFromFile` 예제에서 try 블록과 `try-with-resources` 문 모두에서 예외가 발생하면 `readFirstLineFromFile` 메서드는 **try 블록에서** 예외가 발생합니다. `try-with-resources` 블록에서 발생한 예외는 억제된다.
+이 예제에서 리소스 누수가 발생할 수 있다. 프로그램은 리소스 사용이 끝났을 때 리소스의 메모리를 회수하기 위해 가비지 컬렉터(GC)에 의존하는 것 이상을 수행해야 한다. 또한 프로그램은 일반적으로 리소스의 close 메소드를 호출하여 리소스를 운영체제로 다시 해제(release)해야 한다. 그러나 GC가 리소스를 회수하기 전에 프로그램이 이 작업을 수행하지 못하면 리소스를 해제하는 데 필요한 정보가 손실(lost)된다. 운영체제에서 여전히 사용 중인 것으로 간주되며 리소스 누수가 발생한 것이다. 위 예제코드에서 readLine 메소드가 예외를 throw하고 finally 블록의 `br.close()`문에서 예외가 발생하면 FileReader가 누수된 것이다. 따라서 이런 일이 발생하지 않으면서 프로그램의 리소스를 완전히 닫으려면 finally 블록 대신 `try-with-resources` 문을 사용하여야 한다. readLine 메소드와 close 메소드가 모두 예외를 throw하는 경우 `readFirstLineFromFileWithFinallyBlock` **메소드는 finally 블록에서 throw된 예외를 throw한다.** try 블록에서 throw된 예외가 억제(suppressed)된다. 반대로, `readFirstLineFromFile` 예제에서 try 블록과 `try-with-resources` 문 모두에서 예외가 발생하면 `readFirstLineFromFile` 메소드는 **try 블록에서** 예외가 발생한다. `try-with-resources` 블록에서 발생한 예외는 억제된다.
