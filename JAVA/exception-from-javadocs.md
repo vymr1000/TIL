@@ -1,5 +1,6 @@
 # Exception from Java Docs (Exception 공식 튜토리얼)
 
+<br/>
 
 ## What Is an Exception? (예외란 무엇인가)
 
@@ -232,3 +233,10 @@ static String readFirstLineFromFileWithFinallyBlock(String path) throws IOExcept
 ```
 
 이 예제에서 리소스 누수가 발생할 수 있다. 프로그램은 리소스 사용이 끝났을 때 리소스의 메모리를 회수하기 위해 가비지 컬렉터(GC)에 의존하는 것 이상을 수행해야 한다. 또한 프로그램은 일반적으로 리소스의 close 메소드를 호출하여 리소스를 운영체제로 다시 해제(release)해야 한다. 그러나 GC가 리소스를 회수하기 전에 프로그램이 이 작업을 수행하지 못하면 리소스를 해제하는 데 필요한 정보가 손실(lost)된다. 운영체제에서 여전히 사용 중인 것으로 간주되며 리소스 누수가 발생한 것이다. 위 예제코드에서 readLine 메소드가 예외를 throw하고 finally 블록의 `br.close()`문에서 예외가 발생하면 FileReader가 누수된 것이다. 따라서 이런 일이 발생하지 않으면서 프로그램의 리소스를 완전히 닫으려면 finally 블록 대신 `try-with-resources` 문을 사용하여야 한다. readLine 메소드와 close 메소드가 모두 예외를 throw하는 경우 `readFirstLineFromFileWithFinallyBlock` **메소드는 finally 블록에서 throw된 예외를 throw한다.** try 블록에서 throw된 예외가 억제(suppressed)된다. 반대로, `readFirstLineFromFile` 예제에서 try 블록과 `try-with-resources` 문 모두에서 예외가 발생하면 `readFirstLineFromFile` 메소드는 **try 블록에서** 예외가 발생한다. `try-with-resources` 블록에서 발생한 예외는 억제된다.
+
+<br/>
+<br/>
+
+
+### Reference
+[[Oracle Java Docs] Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html)
