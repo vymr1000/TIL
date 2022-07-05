@@ -237,6 +237,136 @@ static String readFirstLineFromFileWithFinallyBlock(String path) throws IOExcept
 <br/>
 <br/>
 
+### 예제로 확인해보기
+
+<br/>
+
+**try-with-resource 예제**
+
+AutoCloseable 구현한 클래스라는 전제하에 try-with-resource 문을 통해서 따로 `close()`를 호출하지 않아도 자동적으로 두 `br.close()` ,`br.close()`함수 모두 호출된다. 또한 로그에서 억제된 (Suppressed)된 예외까지 전부 확인할 수 있다.
+
+```java
+class TryWithResouece {
+    public static void main(String[] args) throws Exception {
+				// try-with-resource
+        try ( FileReader fr = new FileReader();
+              BufferedReader br = new BufferedReader())  {
+            fr.readLine(true);
+        }
+    }
+}
+
+class FileReader implements AutoCloseable {
+
+    public void readLine(boolean exception) throws MethodException {
+        System.out.println("FileReader methodException(" + exception + ") 함수 호출");
+        if(exception) {
+            throw new MethodException("FileReader Method 실행중 발생한 Exception");
+        }
+    }
+
+    public void close() throws Exception {
+        System.out.println("FileReader close() 함수 호출");
+        throw new CloseException("FileReader Close 실행중 발생한 Exception");
+
+    }
+}
+
+class BufferedReader implements AutoCloseable {
+
+    public void readLine(boolean exception) throws MethodException {
+        System.out.println("BufferedReader methodException(" + exception + ") 함수 호출");
+        if(exception) {
+            throw new MethodException("BufferedReader Method 실행중 발생한 Exception");
+        }
+    }
+
+    public void close() throws Exception {
+        System.out.println("BufferedReader close() 함수 호출");
+        throw new CloseException("BufferedReader Close 실행중 발생한 Exception");
+
+    }
+}
+
+class MethodException extends Exception {
+    MethodException(String msg) { super(msg); }
+}
+
+class CloseException extends Exception {
+    CloseException(String msg) { super(msg); }
+}
+```
+
+<img src="./images/log-try-with-resource.png" width="700px"/>
+
+
+<br/>
+
+**try-finally 예제**
+
+try-with-resource 문과는 달리 `br.close()` 함수는 호출되지 않았다. 메모리 누수가 발생할 여지가 있다. 또한 로그에서 예외 부분을 단 한가지만 확인할 수 있다.
+
+```java
+class TryWithResouece {
+    public static void main(String[] args) throws Exception {
+				// try-finally 
+        FileReader fr = new FileReader();
+        BufferedReader br = new BufferedReader();
+        try {
+            fr.readLine(true);
+        } finally {
+            fr.close();
+            br.close();
+        }
+     
+    }
+}
+
+class FileReader implements AutoCloseable {
+
+    public void readLine(boolean exception) throws MethodException {
+        System.out.println("FileReader methodException(" + exception + ") 함수 호출");
+        if(exception) {
+            throw new MethodException("FileReader Method 실행중 발생한 Exception");
+        }
+    }
+
+    public void close() throws Exception {
+        System.out.println("FileReader close() 함수 호출");
+        throw new CloseException("FileReader Close 실행중 발생한 Exception");
+
+    }
+}
+
+class BufferedReader implements AutoCloseable {
+
+    public void readLine(boolean exception) throws MethodException {
+        System.out.println("BufferedReader methodException(" + exception + ") 함수 호출");
+        if(exception) {
+            throw new MethodException("BufferedReader Method 실행중 발생한 Exception");
+        }
+    }
+
+    public void close() throws Exception {
+        System.out.println("BufferedReader close() 함수 호출");
+        throw new CloseException("BufferedReader Close 실행중 발생한 Exception");
+
+    }
+}
+
+class MethodException extends Exception {
+    MethodException(String msg) { super(msg); }
+}
+
+class CloseException extends Exception {
+    CloseException(String msg) { super(msg); }
+}
+```
+
+<img src="./images/log-try-finally.png" width="700px"/>
+
 
 ### Reference
 [[Oracle Java Docs] Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html)
+
+
