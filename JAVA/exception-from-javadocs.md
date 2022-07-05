@@ -247,13 +247,13 @@ static String readFirstLineFromFileWithFinallyBlock(String path) throws IOExcept
 
 **try-with-resource 예제**
 
-AutoCloseable 구현한 클래스라는 전제하에 try-with-resource 문을 통해서 따로 `close()`를 호출하지 않아도 자동적으로 두 `br.close()` ,`br.close()`함수 모두 호출된다. 또한 로그에서 억제된 (Suppressed)된 예외까지 전부 확인할 수 있다.
+try-with-resource 문을 통해서 따로 `close()`를 호출하지 않아도 try을 수행을 마치면서 동시에 자동으로 두 `br.close()` ,`br.close()`함수 모두 호출한다. 또한 로그에서 억제된 (Suppressed)된 예외까지 전부 확인할 수 있다. 이때 클래스는 AutoClosebale을 구현해야 한다.
 
 ```java
 class TryWithResouece {
     public static void main(String[] args) throws Exception {
         // try-with-resource
-        try ( FileReader fr = new FileReader();
+        try (FileReader fr = new FileReader();
               BufferedReader br = new BufferedReader())  {
             fr.readLine(true);
         }
