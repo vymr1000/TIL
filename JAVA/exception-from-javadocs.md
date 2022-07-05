@@ -2,6 +2,10 @@
 
 <br/>
 
+[try-with-resource 예제](###-Example-try-with-resource)
+
+<br/>
+
 ## What Is an Exception? (예외란 무엇인가)
 
 **도대체 ‘예외’ 란 무엇인가?** 공식문서에서의 정의한 의미는 아래와 같다. 
@@ -237,7 +241,7 @@ static String readFirstLineFromFileWithFinallyBlock(String path) throws IOExcept
 <br/>
 <br/>
 
-### 예제로 확인해보기
+### Example try with resource
 
 <br/>
 
