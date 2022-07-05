@@ -2,7 +2,7 @@
 
 <br/>
 
-[try-with-resource 예제](#example-try-with-resource)
+[try-with-resource 예제코드](#example-try-with-resource)
 
 <br/>
 
@@ -252,7 +252,7 @@ AutoCloseable 구현한 클래스라는 전제하에 try-with-resource 문을 �
 ```java
 class TryWithResouece {
     public static void main(String[] args) throws Exception {
-				// try-with-resource
+        // try-with-resource
         try ( FileReader fr = new FileReader();
               BufferedReader br = new BufferedReader())  {
             fr.readLine(true);
@@ -313,7 +313,7 @@ try-with-resource 문과는 달리 `br.close()` 함수는 호출되지 않았다
 ```java
 class TryWithResouece {
     public static void main(String[] args) throws Exception {
-				// try-finally 
+        // try-finally 
         FileReader fr = new FileReader();
         BufferedReader br = new BufferedReader();
         try {
