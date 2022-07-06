@@ -28,3 +28,22 @@
 ### e.**printStackTrace**()를 사용하지 마라
 
 - 개발시에만 사용할 것, 불필요한 로그 출력으로 메모리 누수 발생
+
+<br/>
+
+## JVM은 Exception을 어떻게 처리하는가
+[참고: Geeksforgeeks Exception in Java](https://www.geeksforgeeks.org/exceptions-in-java/)
+
+### 기본 예외 처리
+
+메소드 내부에서 익셉션이 발생할 때마다 메소드는 `Exception Object`라고 하는 객체를 생성하여 JVM에 전달한다. `Exception Object`는 익셉션의 이름과 설명, 익셉션이 발생한 프로그램의 현재 상태를 포함한다. `Exception Object`를 만들고 JVM에서 처리하는 것을 Exception throw라고 한다. 익셉션이 발생한 메소드에 도달하기 위해 호출된 메소드 목록이 여러개 있을 수 있으며 이렇게 정렬된 메소드 목록을 `Call stack`이라고 합니다. 이제 익셉션이 발생한 때에 상황을 살펴보자. 
+
+- JVM은 호출 스택을 검색하여 발생한 익셉션을 처리할 수 있는 코드 블록이 포함된 메서드를 찾는다. 이 코드 블록을 예외 핸들러라고 한다.
+- JVM은 익셉션이 발생한 메소드부터 검색을 시작하고 메소드가 호출된 역순으로 call stack을 진행한다.
+- 적절한 핸들러를 찾으면 발생한 익셉션을 핸들러에 전달한다. 적절한 핸들러는 던져진 `Exception Object`의 타입이 처리할 수 있는 타입과 일치한다는 것을 의미합니다.
+- JVM이 `Call stack`의 모든 메소드를 검색하고 적절한 핸들러를 찾지 못한 경우 JVM은 JVM의 일부인 기본 익셉션 핸들러에 `Exception Object`를 넘겨준다. 이 핸들러는 예외 정보를 다음과 같은 형식으로 출력하고 프로그램을 비정상 종료한다.
+
+```java
+Exception in thread "xxx" Name of Exception : Description
+... ...... ..  // Call Stack
+```
