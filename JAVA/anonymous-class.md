@@ -6,7 +6,7 @@
 
 ### 익명클래스의 선언
 
-익명클래스를 선언하는 방법은 무엇일까. 여기서 알아야할 차이점은 로컬 클래스는 **클래스 선언(declaration)**이지만 익명 클래스는 **표현식(expresstion)이라는 것**이다. 즉, 기존과는 다른 방식으로 클래스를 정의해야 한다. 다음 예제 `HelloWorldAnonymousClasses`는 지역 변수 `FrenchGreeting` 및 `spanishGreeting`의 초기화 문에서 익명 클래스를 사용하지만 변수 `englishGreeting`의 초기화에는 로컬 클래스를 사용한다.
+익명클래스를 선언하는 방법은 무엇일까. 여기서 알아야할 차이점은 로컬 클래스는 클래스 선언(declaration)이지만 익명 클래스는 **표현식(expresstion)이라는 것**이다. 즉, 기존과는 다른 방식으로 클래스를 정의해야 한다. 다음 예제 `HelloWorldAnonymousClasses`는 지역 변수 `FrenchGreeting` 및 `spanishGreeting`의 초기화 문에서 익명 클래스를 사용하지만 변수 `englishGreeting`의 초기화에는 로컬 클래스를 사용한다.
 
 ```java
 public class HelloWorldAnonymousClasses {
