@@ -18,7 +18,7 @@ public class HelloWorldAnonymousClasses {
   
     public void sayHello() {
         
-				// 로컬 클래스 선언
+        // 로컬 클래스 선언
         class EnglishGreeting implements HelloWorld {
             String name = "world";
             public void greet() {
@@ -30,10 +30,10 @@ public class HelloWorldAnonymousClasses {
             }
         }
       
-				// 클래스 객체 생성
+        // 클래스 객체 생성
         HelloWorld englishGreeting = new EnglishGreeting();
         
-				// 익명클래스를 통한 객체 할당, 선언과 동시 할당
+        // 익명클래스를 통한 객체 할당, 선언과 동시 할당
         HelloWorld frenchGreeting = new HelloWorld() {
             String name = "tout le monde";
             public void greet() {
@@ -45,7 +45,7 @@ public class HelloWorldAnonymousClasses {
             }
         };
 
-				// 익명클래스를 통한 객체 할당, 선언과 동시 할당
+        // 익명클래스를 통한 객체 할당, 선언과 동시 할당
         HelloWorld spanishGreeting = new HelloWorld() {
             String name = "mundo";
             public void greet() {
