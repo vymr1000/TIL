@@ -10,7 +10,7 @@ interface Calculate {
 ```
 
 ```java
-// 인터페이스를 익명클래스로 구현
+// operation 메소드 호출을 위한 인터페이스 객체를 익명클래스로 구현
 private void calculateClassic() {
 	Calculate calculateAdd = new Calculate() {
 		@Override
@@ -25,7 +25,7 @@ private void calculateClassic() {
 ```
 
 ```java
-// 인터페이스를 lambda로 구현 - 익명클래스보다 간결해진 구현이다
+// operation 메소드 호출을 위한 인터페이스 객체를 lambda로 구현 - 익명클래스보다 간결해진 구현이다
 private void calculateClassic() {
 	Calculate calculateAdd = (a, b) -> a+b;
 	// operation 호출부
@@ -38,7 +38,7 @@ private void calculateClassic() {
 `Calculate` 라는 인터페이스는 일반적인 인터페이스 처럼 보이지만 이 인터페이스는 Functional(함수형) 인터페이스라고 부를 수 있다. 하지만 이 함수형 인터페이스에는 주의해야 할 점이 있다.
 
 ```java
-// 메소드가 2개 있는 인터페이스
+// 메소드가 2개 있는 인터페이스 - 함수형 인터페이스가 될 수 없다.
 interface Calculate {
 	int operationAdd(int a, int b);
 	int operationSubtract(int a, int b);
@@ -48,7 +48,7 @@ interface Calculate {
 인터페이스에 이렇게 메소드가 두개 정의되어 있다면 람다식을 사용할 수 없고 컴파일 에러가 발생한다. 이런 혼동을 피하기 위해 `@FunctionalInterface` 어노테이션을 명시해준다.
 
 ```java
-// 어노테이션을 통해 이 인터페이스는 함수형 인터페이스임을 명시한다.
+// @FunctionalInterface 어노테이션을 통해 이 인터페이스는 함수형 인터페이스임을 명시한다.
 @FunctionalInterface
 interface Calculate {
 	int operation(int a, int b);
