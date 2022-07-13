@@ -13,5 +13,6 @@
 * [Nested class - 중첩클래스](https://github.com/nuseehr/TIL/blob/master/JAVA/nested-class.md)
 * [Anonymous class - 익명클래스](https://github.com/nuseehr/TIL/blob/master/JAVA/anonymous-class.md)
 * [Functional Interface - 함수형 인터페이스](https://github.com/nuseehr/TIL/blob/master/JAVA/functional-interface.md)
+* [Floating point - 정확한 계산을 해야 할 때 float, double을 사용하면 안 된다](https://github.com/nuseehr/TIL/blob/master/JAVA/floating-point.md)
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
