@@ -3,6 +3,7 @@
 ## Java
 * [Static - 정적 메소드에 대하여](https://github.com/nuseehr/TIL/blob/master/JAVA/static-basic.md)
 * [Inheritance & Composition - 상속](https://github.com/nuseehr/TIL/blob/master/JAVA/inheritance-composition.md)
+* [Inheritance & Interface - 상속과 인터페이스의 의도](https://github.com/nuseehr/TIL/blob/master/JAVA/inheritance-interface.md)
 * [String - String 객체는 불변객체라는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/string.md)
 * [Equals & hashCode - Object 클래스 기본이 되는 메소드](https://github.com/nuseehr/TIL/blob/master/JAVA/equals-and-hashcode.md)
 * [Clone - 객체를 clone한다는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/object-clone.md)
