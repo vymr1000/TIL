@@ -38,5 +38,5 @@
 <br/>
 
 ## Reference
-[참고 : Tistory [Java] 인터페이스와 추상 클래스 차이는 무엇일까?](https://devlog-wjdrbs96.tistory.com/370)    
+[참고: Tistory [Java] 인터페이스와 추상 클래스 차이는 무엇일까?](https://devlog-wjdrbs96.tistory.com/370)    
 [참고: Tistory [이펙티브 자바] 추상 클래스보다는 인터페이스를 우선하라](https://jgrammer.tistory.com/entry/%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C-%EC%9E%90%EB%B0%94-%EC%B6%94%EC%83%81-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A5%BC-%EC%9A%B0%EC%84%A0%ED%95%98%EB%9D%BC)
