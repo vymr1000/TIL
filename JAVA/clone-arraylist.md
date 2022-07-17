@@ -69,7 +69,7 @@ for(Fruit e: copyOfFruits) {
 *****************/
 ```
 
-`fruits`, `copyOfFruits` 은 결국 같은 원소를 가진 것이나 다름없다. 각 원소가 같은 주소값을 가지기 때문이다. `fruits`에 `add` 메소드로 원소를 추가했을 때는 `fruits`에만 원소가 추가되겠지만, `fruits`의 원소를 `setter`함수로 데이터 변경을 했을 때에는 `fruits`, `copyOfFruits` 모두 동일하게 변경될 것이다. 하지만 배열을 복사한다는 것은 원본 데이터를 그대로 보존하고 복사한 데이터를 가지고 변형할 것임을 의미할 것이다. 말그대로 deep copy가 필요한데, 그렇다면 각 원소에 대해 모두 clone을 통해 복사해주면 된다. 그러기 위해선 `Fruit` 클래스를 아래와 같이 수정해준다.
+`fruits`, `copyOfFruits` 은 결국 같은 원소를 가진 것이나 다름없다. 각 원소가 같은 주소값을 가지기 때문이다. `fruits`에 `add` 메소드로 원소를 추가했을 때는 `fruits`에만 원소가 추가되겠지만, `fruits`의 원소를 `setter`메소드로 데이터 변경을 했을 때에는 `fruits`, `copyOfFruits` 모두 동일하게 변경될 것이다. 하지만 배열을 복사한다는 것은 원본 데이터를 그대로 보존하고 복사한 데이터를 가지고 변형할 것임을 의미할 것이다. 말그대로 deep copy가 필요한데, 그렇다면 각 원소에 대해 모두 clone을 통해 복사해주면 된다. 그러기 위해선 `Fruit` 클래스를 아래와 같이 수정해준다.
 
 <br/>
 
@@ -91,7 +91,7 @@ public class Fruit implements Cloneable {
         this.price = price;
     }
 
-		// clone 메소드 재정의
+    // clone 메소드 재정의
     @Override
     protected Fruit clone() throws CloneNotSupportedException {
         return (Fruit) super.clone();
