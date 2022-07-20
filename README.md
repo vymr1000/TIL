@@ -17,5 +17,6 @@
 * [Clone - 객체를 clone한다는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/object-clone.md)
 * [Clone - ArrayList를 복사하는 방법](https://github.com/nuseehr/TIL/blob/master/JAVA/clone-arraylist.md)
 * [Collection - List, Set, Map](https://github.com/nuseehr/TIL/blob/master/JAVA/collection-framework.md)
+* [Garbage Collection - GC 동작 흐름](https://github.com/nuseehr/TIL/blob/master/JAVA/garbage-collection.md)
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
