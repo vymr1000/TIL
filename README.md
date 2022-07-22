@@ -18,6 +18,6 @@
 * [Clone - ArrayList를 복사하는 방법](https://github.com/nuseehr/TIL/blob/master/JAVA/clone-arraylist.md)
 * [Collection - List, Set, Map](https://github.com/nuseehr/TIL/blob/master/JAVA/collection-framework.md)
 * [Garbage Collection - GC 동작 흐름](https://github.com/nuseehr/TIL/blob/master/JAVA/garbage-collection.md)
-* [Thread - 스레드](https://github.com/nuseehr/TIL/blob/master/JAVA/thread.md)
+* [Thread - 쓰레드](https://github.com/nuseehr/TIL/blob/master/JAVA/thread.md)
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)

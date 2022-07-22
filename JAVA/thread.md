@@ -108,22 +108,22 @@ public class CommonCalculate {
     }
 
 		/*
-		
+
 		방법.2 synchronized 블록을 통해 동기화 처리 할 부분을 지정.
-		
+
 		private Object lock = new Object();
 
 		...
 		public void plus(int value) {
-        synchronized (lock) {
-            amount+=value;
-        }
-    }
-    public void minus(int value) {
-        synchronized (lock) {
-            amount-=value;
-        }
-    }
+				synchronized (lock) {
+						amount+=value;
+				}
+		}
+		public void minus(int value) {
+				synchronized (lock) {
+						amount-=value;
+				}
+		}
 
 		*/
     public int getAmount() {
@@ -152,8 +152,8 @@ public class RunSync {
         thread2.start();
 
         try {
-						// thread1, thread2가 종료될때까지 메인쓰레드를 대기시킨다.
-						// join을 통해 쓰레드가 수행하는 연산에 대한 결과를 볼 수 있다.
+					// thread1, thread2가 종료될때까지 메인쓰레드를 대기시킨다.
+					// join을 통해 쓰레드가 수행하는 연산에 대한 결과를 볼 수 있다.
             thread1.join();
             thread2.join();
             System.out.println("Final Value is " + calc.getAmount());
