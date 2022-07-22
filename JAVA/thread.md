@@ -99,13 +99,33 @@ public class CommonCalculate {
     public CommonCalculate() {
         amount = 0;
     }
-		// synchronized 동기화
+		// 방법 1. synchronized 동기화 - 메소드 전체
 		public synchronized void plus(int value) {
         amount+=value;
     }
     public synchronized void minus(int value) {
         amount-=value;
     }
+
+		/*
+		
+		방법.2 synchronized 블록을 통해 동기화 처리 할 부분을 지정.
+		
+		private Object lock = new Object();
+
+		...
+		public void plus(int value) {
+        synchronized (lock) {
+            amount+=value;
+        }
+    }
+    public void minus(int value) {
+        synchronized (lock) {
+            amount-=value;
+        }
+    }
+
+		*/
     public int getAmount() {
         return amount;
     }
