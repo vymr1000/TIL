@@ -95,17 +95,17 @@ public class ModifyAmountThread extends Thread {
 
 ```java
 public class CommonCalculate {
-    private int amount;
-    public CommonCalculate() {
-        amount = 0;
-    }
+		private int amount;
+		public CommonCalculate() {
+				amount = 0;
+		}
 		// 방법 1. synchronized 동기화 - 메소드 전체
 		public synchronized void plus(int value) {
-        amount+=value;
-    }
-    public synchronized void minus(int value) {
-        amount-=value;
-    }
+				amount+=value;
+		}
+		public synchronized void minus(int value) {
+				amount-=value;
+		}
 
 		/*
 
@@ -126,9 +126,9 @@ public class CommonCalculate {
 		}
 
 		*/
-    public int getAmount() {
-        return amount;
-    }
+		public int getAmount() {
+				return amount;
+		}
 }
 ```
 
