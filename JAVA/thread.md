@@ -64,3 +64,81 @@ public void runBasic() {
 ```
 
 인터페이스와 클래스 각 객체가 `start()` 메소드를 호출하게 되면서 쓰레드가 시작된다. 쓰레드가 다른 클래스를 확장할 필요가 있을때 `Runnable` 인터페이스르 구현하면 되며 그렇지 않은 경우에는 `Thread`클래스를 사용하는 것이 편하다.
+
+<br/>
+## Thread 예제
+
+**Thread를 상속받은 ModifyAmountThread 클래스**
+
+```java
+public class ModifyAmountThread extends Thread {
+    private  CommonCalculate calc;
+    private boolean addFlag;
+
+    public ModifyAmountThread(CommonCalculate calc, boolean addFlag){
+        this.calc = calc;
+        this.addFlag = addFlag;
+    }
+    public void run() {
+        for(int loop=0; loop<10000; loop++) {
+            if(addFlag) {
+                calc.plus(1);
+            } else {
+                calc.minus(1);
+            }
+        }
+    }
+}
+```
+
+**연산을 정의해놓은 CommonCalculate 클래스**
+
+```java
+public class CommonCalculate {
+    private int amount;
+    public CommonCalculate() {
+        amount = 0;
+    }
+    public void plus(int value) {
+        amount+=value;
+    }
+    public void minus(int value) {
+        amount-=value;
+    }
+    public int getAmount() {
+        return amount;
+    }
+}
+```
+
+**Thread 생성 및 실행 클래스**
+
+```java
+public class RunSync {
+    public static void main(String[] args) {
+        RunSync runSync = new RunSync();
+        runSync.runCommonCalculate();
+    }
+
+    private void runCommonCalculate() {
+        CommonCalculate calc = new CommonCalculate();
+
+				// 쓰레드1, 쓰레드2 생성 동일한 calc 객체를 사용한다.
+        ModifyAmountThread thread1 = new ModifyAmountThread(calc, true);
+        ModifyAmountThread thread2 = new ModifyAmountThread(calc, true);
+
+        thread1.start();
+        thread2.start();
+
+        try {
+						// thread1, thread2가 종료될때까지 메인쓰레드를 대기시킨다.
+						// join을 통해 쓰레드가 수행하는 연산에 대한 결과를 볼 수 있다.
+            thread1.join();
+            thread2.join();
+            System.out.println("Final Value is " + calc.getAmount());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
