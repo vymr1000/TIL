@@ -99,10 +99,11 @@ public class CommonCalculate {
     public CommonCalculate() {
         amount = 0;
     }
-    public void plus(int value) {
+		// synchronized 동기화
+		public synchronized void plus(int value) {
         amount+=value;
     }
-    public void minus(int value) {
+    public synchronized void minus(int value) {
         amount-=value;
     }
     public int getAmount() {
