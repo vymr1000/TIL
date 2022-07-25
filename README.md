@@ -19,5 +19,6 @@
 * [Collection - List, Set, Map](https://github.com/nuseehr/TIL/blob/master/JAVA/collection-framework.md)
 * [Garbage Collection - GC 동작 흐름](https://github.com/nuseehr/TIL/blob/master/JAVA/garbage-collection.md)
 * [Thread - 쓰레드](https://github.com/nuseehr/TIL/blob/master/JAVA/thread.md)
+* [Java 8 - Java 8에서 새로운 것들](https://github.com/nuseehr/TIL/blob/master/JAVA/java-eight.md)
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
