@@ -10,9 +10,7 @@
 
 공식문서에서 Optional의 정의는 아래와 같이 되어있다.
 
-> *A container object which may or may not contain a non-null value. If a value is present, isPresent() will return true and get() will return the value.
-
-null이 아닌 값을 포함하거나 포함하지 않을 수 있는 컨테이너 객체입니다. 값이 있으면 isPresent()는 true를 반환하고 get()은 값을 반환합니다.*
+> *A container object which may or may not contain a non-null value. If a value is present, isPresent() will return true and get() will return the value. null이 아닌 값을 포함하거나 포함하지 않을 수 있는 컨테이너 객체입니다. 값이 있으면 isPresent()는 true를 반환하고 get()은 값을 반환합니다.*
 > 
 
 클래스 선언부는 아래와 같다.
