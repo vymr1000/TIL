@@ -21,12 +21,11 @@
 <br/>
 
 **Runnable 구현 클래스**
-
 ```java
 public class RunnableSample implements Runnable {
-	public void run() {
-		// 쓰레드가 실행할 코드
-	}
+    public void run() {
+    // 쓰레드가 실행할 코드
+    }
 }
 ```
 
@@ -34,9 +33,9 @@ public class RunnableSample implements Runnable {
 
 ```java
 public class ThreadSample extends Thread {
-	public void run() {
-		// 쓰레드가 실행할 코드
-	}
+    public void run() {
+    // 쓰레드가 실행할 코드
+    }
 }
 ```
 
@@ -44,21 +43,20 @@ public class ThreadSample extends Thread {
 
 ```java
 public class RunThreads {
-	public static void main(String[] args) {
-		RunThreads threads = new RunThreads();
-		threads.runBasic();
-	}
+    public static void main(String[] args) {
+        RunThreads threads = new RunThreads();
+        threads.runBasic();
+    }
 }
 
 public void runBasic() {
+    // Runnable 인터페이스 쓰레드 시작
+    RunnableSample runnable = new RunnableSample();
+    new Thread(runnable).start();
 
-	// Runnable 인터페이스 쓰레드 시작
-	RunnableSample runnable = new RunnableSample();
-	new Thread(runnable).start();
-
-	// Thread 클래스 쓰레드 시작
-	ThreadSample thread = ThreadSample();
-	thread.start();
+    // Thread 클래스 쓰레드 시작
+    ThreadSample thread = ThreadSample();
+    thread.start();
 }
 
 ```
@@ -95,40 +93,39 @@ public class ModifyAmountThread extends Thread {
 
 ```java
 public class CommonCalculate {
-		private int amount;
-		public CommonCalculate() {
-				amount = 0;
-		}
-		// 방법 1. synchronized 동기화 - 메소드 전체
-		public synchronized void plus(int value) {
-				amount+=value;
-		}
-		public synchronized void minus(int value) {
-				amount-=value;
-		}
+    private int amount;
+    public CommonCalculate() {
+        amount = 0;
+    }
+    // 방법 1. synchronized 동기화 - 메소드 전체
+    public synchronized void plus(int value) {
+        amount+=value;
+    }
+    public synchronized void minus(int value) {
+        amount-=value;
+    }
+    /*
 
-		/*
+    방법.2 synchronized 블록을 통해 동기화 처리 할 부분을 지정.
 
-		방법.2 synchronized 블록을 통해 동기화 처리 할 부분을 지정.
+    private Object lock = new Object();
 
-		private Object lock = new Object();
+    ...
+    public void plus(int value) {
+        synchronized (lock) {
+            amount+=value;
+        }
+    }
+    public void minus(int value) {
+        synchronized (lock) {
+            amount-=value;
+        }
+    }
 
-		...
-		public void plus(int value) {
-				synchronized (lock) {
-						amount+=value;
-				}
-		}
-		public void minus(int value) {
-				synchronized (lock) {
-						amount-=value;
-				}
-		}
-
-		*/
-		public int getAmount() {
-				return amount;
-		}
+    */
+    public int getAmount() {
+        return amount;
+    }
 }
 ```
 
@@ -144,7 +141,7 @@ public class RunSync {
     private void runCommonCalculate() {
         CommonCalculate calc = new CommonCalculate();
 
-				// 쓰레드1, 쓰레드2 생성 동일한 calc 객체를 사용한다.
+        // 쓰레드1, 쓰레드2 생성 동일한 calc 객체를 사용한다.
         ModifyAmountThread thread1 = new ModifyAmountThread(calc, true);
         ModifyAmountThread thread2 = new ModifyAmountThread(calc, true);
 
@@ -152,8 +149,8 @@ public class RunSync {
         thread2.start();
 
         try {
-					// thread1, thread2가 종료될때까지 메인쓰레드를 대기시킨다.
-					// join을 통해 쓰레드가 수행하는 연산에 대한 결과를 볼 수 있다.
+            // thread1, thread2가 종료될때까지 메인쓰레드를 대기시킨다.
+            // join을 통해 쓰레드가 수행하는 연산에 대한 결과를 볼 수 있다.
             thread1.join();
             thread2.join();
             System.out.println("Final Value is " + calc.getAmount());
