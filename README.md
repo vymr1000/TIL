@@ -22,8 +22,12 @@
 * [Generic - 제네릭을 사용하는 이유, 와일드카드](https://github.com/nuseehr/TIL/blob/master/JAVA/generic.md)
 * [Java 8 - Java 8에서 새로운 것들](https://github.com/nuseehr/TIL/blob/master/JAVA/java-eight.md)
 
-## JSP
-* [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/JSP/jsp-servlet.md)
+## NETWORK
+* [OSI 7 계층](https://github.com/nuseehr/TIL/blob/master/NETWORK/osi7.md)
+* [TCP / UDP](https://github.com/nuseehr/TIL/blob/master/NETWORK/tcp-udp.md)
+
+## SPRING
+* [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/SPRING/jsp-servlet.md)
 
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
