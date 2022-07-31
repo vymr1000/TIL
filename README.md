@@ -1,6 +1,6 @@
 # Today I Learned (T I L) 
 
-## Java
+## JAVA
 * [Static - 정적 메소드에 대하여](https://github.com/nuseehr/TIL/blob/master/JAVA/static-basic.md)
 * [String - String 객체는 불변객체라는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/string.md)
 * [Equals & hashCode - Object 클래스 기본이 되는 메소드](https://github.com/nuseehr/TIL/blob/master/JAVA/equals-and-hashcode.md)
