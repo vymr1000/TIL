@@ -23,7 +23,7 @@
 * [Java 8 - Java 8에서 새로운 것들](https://github.com/nuseehr/TIL/blob/master/JAVA/java-eight.md)
 
 ## JSP
-* [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/jsp-servlet.md)
+* [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/JSP/jsp-servlet.md)
 
 ## OOP
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
