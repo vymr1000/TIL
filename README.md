@@ -12,8 +12,6 @@
 * [Exception - 예외처리](https://github.com/nuseehr/TIL/blob/master/JAVA/exception.md)
 * [Exception - 주의할점](https://github.com/nuseehr/TIL/blob/master/JAVA/exception-advanced.md)
 * [Exception - Exception 공식 튜토리얼](https://github.com/nuseehr/TIL/blob/master/JAVA/exception-from-javadocs.md)
-* [Inheritance & Composition - 상속](https://github.com/nuseehr/TIL/blob/master/JAVA/inheritance-composition.md)
-* [Inheritance & Interface - 상속과 인터페이스의 의도](https://github.com/nuseehr/TIL/blob/master/JAVA/inheritance-interface.md)
 * [Clone - 객체를 clone한다는 것의 의미](https://github.com/nuseehr/TIL/blob/master/JAVA/object-clone.md)
 * [Clone - ArrayList를 복사하는 방법](https://github.com/nuseehr/TIL/blob/master/JAVA/clone-arraylist.md)
 * [Collection - List, Set, Map](https://github.com/nuseehr/TIL/blob/master/JAVA/collection-framework.md)
@@ -32,3 +30,5 @@
 
 ## Object Oriented Programming
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
+* [Inheritance & Composition - 상속](https://github.com/nuseehr/TIL/blob/master/OOP/inheritance-composition.md)
+* [Inheritance & Interface - 상속과 인터페이스의 의도](https://github.com/nuseehr/TIL/blob/master/OOP/inheritance-interface.md)
