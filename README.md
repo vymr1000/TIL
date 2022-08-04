@@ -28,7 +28,7 @@
 ## Spring
 * [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/SPRING/jsp-servlet.md)
 
-## Object Oriented Programming
+## OOP: Object Oriented Programming
 * [SOLID - 객체지향 5대원칙](https://github.com/nuseehr/TIL/blob/master/OOP/solid.md)
 * [Inheritance & Composition - 상속](https://github.com/nuseehr/TIL/blob/master/OOP/inheritance-composition.md)
 * [Inheritance & Interface - 상속과 인터페이스의 의도](https://github.com/nuseehr/TIL/blob/master/OOP/inheritance-interface.md)
