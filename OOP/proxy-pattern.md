@@ -2,6 +2,7 @@
 
 프록시는 대리자, 대변인이라는 뜻을 가진 단어다. 대리자/대변인이라고 하면 다른 누군가를 대신해 그 역할을 수행하는 존재를 말한다. 아래 예제는 프록시를 적용하지 않은 코드이다.
 
+### 프록시 패턴 예제 1
 ```java
 package proxyPattern;
 
@@ -50,15 +51,20 @@ public class Proxy implements IService {
 	IService service1;
 
 	public String runSomething() {
-		System.out.println("프록시는 호출에 대한 흐름 제어가 목적이다");
 
+		System.out.println("프록시는 호출에 대한 흐름 제어가 목적이다");
 		service1 = new Service();
+
 		return service1.runSomething();
 	}
 }
 
 ```
+`IService` 라는 인터페이스를 정의한 후 이를 구현하는 `Service` 를 만들어 실제 서비스 로직을 만든다. `runSomething()` 라는 서비스 로직을 기존에는 직접 호출하였으나 동일하게 `IService` 를 구현하는 `Proxy` 클래스를 정의하고 클라이언트에서는 `runSomething()` 이라는 메소드를 `Proxy` 객체를 통해서 호출한다.
 
+<br/>
+
+### 프록시 패턴 예제 2 - 프록시 패턴을 활용한 AOP 적용
 ```java
 package proxyPattern;
 
@@ -89,7 +95,7 @@ public class Store {
 public class Cash implement Payment {
 	@Override
 	public void pay(int amount) {
-		System.out.println(amount + " 현금결제");
+		System.out.println(amount + "원 현금결제");
 	}
 }
 ```
@@ -121,7 +127,6 @@ public class StoreTest {
 	public void testPay() {
 
 		//Payment cash = new Cash();
-
 		Payment cashPerf = new CashPerf();
 		Store store = new Store(cashPerf);
 		store.buySomething(35000);
