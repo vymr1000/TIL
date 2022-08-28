@@ -28,7 +28,7 @@
 ## Spring
 * [JSP, Servlet - 서블릿의 의미](https://github.com/nuseehr/TIL/blob/master/SPRING/jsp-servlet.md)
 * [Annotation - 어노테이션](https://github.com/nuseehr/TIL/blob/master/SPRING/annotation.md)
-* [다이내믹 프록시](https://github.com/nuseehr/TIL/blob/master/SPRING/dynamic-proxy.md)
+* [다이내믹 프록시 - 프록시를 동적으로 생성하는 기술](https://github.com/nuseehr/TIL/blob/master/SPRING/dynamic-proxy.md)
 * [스프링 AOP - Aspect Oriented Programming](https://github.com/nuseehr/TIL/blob/master/SPRING/aop.md)
 
 ## OOP: Object Oriented Programming
