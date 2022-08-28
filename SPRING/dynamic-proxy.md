@@ -11,8 +11,7 @@
 ```java
 package java.lang.reflect;
 public interface InvocationHandler {
-		public Object invoke(Object proxy, Method method, Object[] args)
-			throws Throwable;
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;
 }
 ```
 
@@ -36,20 +35,20 @@ public class TimeInvocationHandler implements InvocationHandler {
     private final Object target;
     public TimeInvocationHandler(Object target) {
         this.target = target;
-		}
+    }
 
-		@Override
-		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				log.info("TimeProxy 실행");
-				long startTime = System.currentTimeMillis();
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        log.info("TimeProxy 실행");
+        long startTime = System.currentTimeMillis();
 
-				Object result = method.invoke(target, args);
+        Object result = method.invoke(target, args);
 
-				long endTime = System.currentTimeMillis();
-				long resultTime = endTime - startTime; log.info("TimeProxy 종료 resultTime={}", resultTime); 
-				
-				return result;
-			} 
+        long endTime = System.currentTimeMillis();
+        long resultTime = endTime - startTime; log.info("TimeProxy 종료 resultTime={}", resultTime); 
+        
+        return result;
+      } 
 }
 ```
 
@@ -70,25 +69,29 @@ import java.lang.reflect.Proxy;
 
 @Slf4j
 public class JdkDynamicProxyTest {
-		@Test
-		void dynamicA() {
-				AInterface target = new AImpl();
-				TimeInvocationHandler handler = new TimeInvocationHandler(target);
-				AInterface proxy = (AInterface)Proxy.newProxyInstance(AInterface.class.getClassLoader(), new Class[]{AInterface.class}, handler);
-				proxy.call();
-				log.info("targetClass={}", target.getClass());
-				log.info("proxyClass={}", proxy.getClass());
-		}
-
-		@Test
-		void dynamicB() {
-	      BInterface target = new BImpl();
-	      TimeInvocationHandler handler = new TimeInvocationHandler(target);
-	      BInterface proxy = (BInterface)Proxy.newProxyInstance(BInterface.class.getClassLoader(), new Class[]{BInterface.class}, handler);
+    @Test
+    void dynamicA() {
+        AInterface target = new AImpl();
+        TimeInvocationHandler handler = new TimeInvocationHandler(target);
+        AInterface proxy = (AInterface)Proxy.newProxyInstance(AInterface.class.getClassLoader(), new Class[]{AInterface.class}, handler);
+        
         proxy.call();
+        
         log.info("targetClass={}", target.getClass());
         log.info("proxyClass={}", proxy.getClass());
-		}
+    }
+
+    @Test
+    void dynamicB() {
+        BInterface target = new BImpl();
+        TimeInvocationHandler handler = new TimeInvocationHandler(target);
+        BInterface proxy = (BInterface)Proxy.newProxyInstance(BInterface.class.getClassLoader(), new Class[]{BInterface.class}, handler);
+        
+        proxy.call();
+        
+        log.info("targetClass={}", target.getClass());
+        log.info("proxyClass={}", proxy.getClass());
+    }
 }
 ```
 
