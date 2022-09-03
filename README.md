@@ -38,3 +38,4 @@
 * [Proxy - 프록시 패턴](https://github.com/nuseehr/TIL/blob/master/OOP/proxy-pattern.md)
 * [Singleton - 싱글턴 패턴](https://github.com/nuseehr/TIL/blob/master/OOP/singleton-pattern.md)
 * [Template Method & Strategy - 템플릿 메서드 패턴과 전략 패턴](https://github.com/nuseehr/TIL/blob/master/OOP/strategy-pattern.md)
+* [Layered Architeture - 레이어드 아키텍처](https://github.com/nuseehr/TIL/blob/master/OOP/layered.md)
