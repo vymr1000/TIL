@@ -40,7 +40,7 @@ catch 또는 지정 요구사항을 준수하지 않는 코드는 컴파일되�
 
 ### ****Exception의 종류는 3가지로 구분된다.****
 
-첫 번째 예외는 **체크 예외(Checked Exception)**이다. 이는 잘 작성된 애플리케이션이 예상하고 복구해야 하는 예외적인 조건이다. 예를 들어 애플리케이션이 사용자에게 입력 파일 이름을 묻는 메시지를 표시한 다음 `java.io.FileReader`의 생성자에 이름을 전달하여 파일을 연다고 가정해보자. 일반적으로 사용자는 읽을 수 있는 존재하는 파일의 이름을 전달할 것이므로 FileReader는 성공적으로 객체를 만들고 응용 프로그램의 실행이 정상적으로 진행된다. 그러나 때때로 사용자는 존재하지 않는 파일의 이름을 전달하여 생성자는 `java.io.FileNotFoundException`을 던진다. 잘 작성된 프로그램은 이 예외를 포착하고 사용자에게 실수를 알리고 수정된 파일 이름을 묻는 메시지를 표시할 수 있다. 체크 예외는 위에서 설명했던 catch 또는 지정 요구사항의 적용을 받는다. `Error`, `RuntimeException` 및 해당 하위 클래스로 표시된 예외를 제외한 모든 예외는 체크 예외이다.
+첫 번째 예외는 **체크 예외(Checked Exception)** 이다. 이는 잘 작성된 애플리케이션이 예상하고 복구해야 하는 예외적인 조건이다. 예를 들어 애플리케이션이 사용자에게 입력 파일 이름을 묻는 메시지를 표시한 다음 `java.io.FileReader`의 생성자에 이름을 전달하여 파일을 연다고 가정해보자. 일반적으로 사용자는 읽을 수 있는 존재하는 파일의 이름을 전달할 것이므로 FileReader는 성공적으로 객체를 만들고 응용 프로그램의 실행이 정상적으로 진행된다. 그러나 때때로 사용자는 존재하지 않는 파일의 이름을 전달하여 생성자는 `java.io.FileNotFoundException`을 던진다. 잘 작성된 프로그램은 이 예외를 포착하고 사용자에게 실수를 알리고 수정된 파일 이름을 묻는 메시지를 표시할 수 있다. 체크 예외는 위에서 설명했던 catch 또는 지정 요구사항의 적용을 받는다. `Error`, `RuntimeException` 및 해당 하위 클래스로 표시된 예외를 제외한 모든 예외는 체크 예외이다.
 
 **체크 예외 예시**
 
@@ -50,7 +50,7 @@ catch 또는 지정 요구사항을 준수하지 않는 코드는 컴파일되�
 
 <br/>
 
-두 번째 예외는 **Error**이다. 이는 애플리케이션 외부에 있으며 일반적으로 **애플리케이션이 예상하거나 복구할 수 없는 예외적인 조건**이다. 예를 들어 애플리케이션이 입력을 위해 파일을 성공적으로 열었지만 하드웨어 또는 시스템 오작동으로 인해 파일을 읽을 수 없다고 가정해보자. 읽기에 실패하면 `java.io.IOError`가 발생한다. 애플리케이션은 사용자에게 문제를 알리기 위해 이 예외를 catch하도록 할 수 있지만 프로그램이 스택 추적을 인쇄하고 종료하는 것도 유의미한 처리일 수도 있다. (어차피 처리가 불가능하기 때문에). **오류(Error)**는 캐치 또는 지정 요구사항의 적용을 받지 않는다. 오류는 Error 및 해당 하위 클래스에 의해 표시되는 예외이다.
+두 번째 예외는 **Error**이다. 이는 애플리케이션 외부에 있으며 일반적으로 **애플리케이션이 예상하거나 복구할 수 없는 예외적인 조건**이다. 예를 들어 애플리케이션이 입력을 위해 파일을 성공적으로 열었지만 하드웨어 또는 시스템 오작동으로 인해 파일을 읽을 수 없다고 가정해보자. 읽기에 실패하면 `java.io.IOError`가 발생한다. 애플리케이션은 사용자에게 문제를 알리기 위해 이 예외를 catch하도록 할 수 있지만 프로그램이 스택 추적을 인쇄하고 종료하는 것도 유의미한 처리일 수도 있다. (어차피 처리가 불가능하기 때문에). **오류(Error)** 는 캐치 또는 지정 요구사항의 적용을 받지 않는다. 오류는 Error 및 해당 하위 클래스에 의해 표시되는 예외이다.
 
 **오류(Error) 예시**
 
@@ -60,7 +60,7 @@ catch 또는 지정 요구사항을 준수하지 않는 코드는 컴파일되�
 
 <br/>
 
-세 번째 종류의 예외는 **런타임 예외(runtime exception)**이다. 이는 애플리케이션 내부에 있으며 일반적으로 애플리케이션이 예상하거나 복구할 수 없는 예외적인 조건이다. 이는 **일반적으로 논리 오류 또는 API의 부적절한 사용과 같은 프로그래밍 버그**를 나타낸다. 예를 들어, FileReader의 생성자에 파일 이름을 전달하는 앞에서 설명한 애플리케이션을 가지고 생각해보자. 논리 오류로 인해 생성자에 null이 전달되면 생성자는 NullPointerException을 throw한다. 애플리케이션은 이 예외를 catch할 수 있지만 예외를 발생시킨 버그를 제거하는 것이 더 합리적인 처리방법 일 수 있다. 런타임 예외는 catch 또는 지정 요구사항의 적용을 받지 않는다. 런타임 예외는 RuntimeException 및 해당 하위 클래스에 의해 표시되는 예외이다. **오류(Error)**와 **런타임 예외(Runtime Exception)**를 통틀어 언체크 예외라고 한다.
+세 번째 종류의 예외는 **런타임 예외(runtime exception)** 이다. 이는 애플리케이션 내부에 있으며 일반적으로 애플리케이션이 예상하거나 복구할 수 없는 예외적인 조건이다. 이는 **일반적으로 논리 오류 또는 API의 부적절한 사용과 같은 프로그래밍 버그** 를 나타낸다. 예를 들어, FileReader의 생성자에 파일 이름을 전달하는 앞에서 설명한 애플리케이션을 가지고 생각해보자. 논리 오류로 인해 생성자에 null이 전달되면 생성자는 NullPointerException을 throw한다. 애플리케이션은 이 예외를 catch할 수 있지만 예외를 발생시킨 버그를 제거하는 것이 더 합리적인 처리방법 일 수 있다. 런타임 예외는 catch 또는 지정 요구사항의 적용을 받지 않는다. 런타임 예외는 RuntimeException 및 해당 하위 클래스에 의해 표시되는 예외이다. **오류(Error)**와 **런타임 예외(Runtime Exception)** 를 통틀어 언체크 예외라고 한다.
 
 **런타임 예외 예시**
 
@@ -72,7 +72,7 @@ catch 또는 지정 요구사항을 준수하지 않는 코드는 컴파일되�
 
 ## Catching and Handling Exceptions (예외 처리)
 
-Exception handler 구성 요소인 **try-catch 및 finally** 블록을 사용하여 예외 핸들러를 작성하는 법을 알아보자. 그런 다음 Java SE 7에서 도입된 **try-with-resources** 구문에 대해서도 살펴보자. `**try-with-resources` 문은 `stream`과 같은 `Closeable` 리소스를 사용하는 상황에 특히 적합하다**. `ListOfNumbers`라는 클래스로 예를 들어보는데 `ListOfNumbers`는 생성될 때 0부터 9까지의 순차 값을 갖는 10개의 정수 요소를 포함하는 ArrayList를 만드는 클래스이다. `ListOfNumbers` 클래스는 OutFile.txt라는 텍스트 파일에 숫자 목록을 쓰는 writeList라는 메소드도 포함한다. 이 예제는 기본 I/O에서 다루는 java.io에 정의된 출력 클래스를 사용한다.
+Exception handler 구성 요소인 **try-catch 및 finally** 블록을 사용하여 예외 핸들러를 작성하는 법을 알아보자. 그런 다음 Java SE 7에서 도입된 **try-with-resources 구문에 대해서도 살펴보자. `**try-with-resources` 문은 `stream`과 같은 `Closeable` 리소스를 사용하는 상황에 특히 적합하다** . `ListOfNumbers`라는 클래스로 예를 들어보는데 `ListOfNumbers`는 생성될 때 0부터 9까지의 순차 값을 갖는 10개의 정수 요소를 포함하는 ArrayList를 만드는 클래스이다. `ListOfNumbers` 클래스는 OutFile.txt라는 텍스트 파일에 숫자 목록을 쓰는 writeList라는 메소드도 포함한다. 이 예제는 기본 I/O에서 다루는 java.io에 정의된 출력 클래스를 사용한다.
 
 ```java
 // Note: 이 클래스는 아직 완전히 작성된 클래스가 아님.
@@ -94,7 +94,7 @@ public class ListOfNumbers {
 
     public void writeList() {
 				// FileWriter 생성자는 IOException을 던질 수 있다. 체크 예외.
-        PrintWriter out = new PrintWriter(**new FileWriter("OutFile.txt")**);
+        PrintWriter out = new PrintWriter(new FileWriter("OutFile.txt"));
 
         for (int i = 0; i < SIZE; i++) {
 						// get 메소드는 IndexOutOfBoundsException을 던질 수 있다. 언체크 예외.
@@ -187,14 +187,14 @@ finally 블록은 try 블록이 종료될 때 항상 실행된다. 이렇게 하
 ```java
 finally {
 	if (out != null) {
-			System.out.println("PrintWriter 종료");
-			out.close();
+        System.out.println("PrintWriter 종료");
+        out.close();
 	} else {
-			System.out.println("PrintWriter가 열리지 않았습니다.");
+        System.out.println("PrintWriter가 열리지 않았습니다.");
 	}
 	if (f != null) {
-			System.out.println("FileWriter 닫기");
-			f.close();
+        System.out.println("FileWriter 닫기");
+        f.close();
 	}
 }
 
