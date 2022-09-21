@@ -93,7 +93,7 @@ public class ListOfNumbers {
     }
 
     public void writeList() {
-				// FileWriter 생성자는 IOException을 던질 수 있다. 체크 예외.
+				// FileWriter 생성자는 IOException을 던질 수 있다. 체크 예외
         PrintWriter out = new PrintWriter(new FileWriter("OutFile.txt"));
 
         for (int i = 0; i < SIZE; i++) {
