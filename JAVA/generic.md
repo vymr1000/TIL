@@ -194,6 +194,7 @@ List<? extends Child> list = new ArrayList<>();
 Child c = list.get(0);
 ```
 
+<br/>
 
 ## static 변수는 제네릭 타입이 될 수 없다
 
@@ -206,6 +207,8 @@ class FruitBox<T> {
 
 static 변수에 제너릭 타입은 사용할 수 없다. 왜냐하면 `FruitBox` 클래스가 인스턴스가 되기 전에 static 변수 `fruit`은 메모리에 올라가는데 이 때 `fruit`의 타입인 T가 결정되지 않기 때문에 위와 같이 사용할 수 없는 것이다.
 
+<br/>
+
 ### **제너릭 메소드는 static이 가능하다**
 
 제너릭 메소드는 호출 시에 매게 타입을 지정하기 때문에 static이 가능하다.
@@ -217,6 +220,8 @@ class CommonResponse<T> {
 	}
 }
 ```
+
+<br/>
 
 ## Raw Type
 
@@ -233,6 +238,9 @@ for (String str : good) {
 ```
 경고가 발생하긴 하지만 컴파일이 되는 코드이다. 하지만 이 코드를 실행하면 java.lang.ClassCastException이 발생한다. 애초에 Raw Type은 자바에 제네릭이 도입되기 전(JDK 5.0 이전) 코드와 호환성을 보장하기 위한 것이다. 정적 타입 언어라는 자바의 강점을 이용하기 위해서 Raw Type을 사용하지 말아야 한다.
 
+<br/>
+<br/>
+<br/>
 
 ## Reference
 
