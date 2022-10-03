@@ -193,3 +193,49 @@ Child c = list.get(0);
 List<? extends Child> list = new ArrayList<>();
 Child c = list.get(0);
 ```
+
+
+## static 변수는 제네릭 타입이 될 수 없다
+
+```java
+class FruitBox<T> {
+	static T fruit;
+}
+ 
+```
+
+static 변수에 제너릭 타입은 사용할 수 없다. 왜냐하면 `FruitBox` 클래스가 인스턴스가 되기 전에 static 변수 `fruit`은 메모리에 올라가는데 이 때 `fruit`의 타입인 T가 결정되지 않기 때문에 위와 같이 사용할 수 없는 것이다.
+
+### **제너릭 메소드는 static이 가능하다**
+
+제너릭 메소드는 호출 시에 매게 타입을 지정하기 때문에 static이 가능하다.
+
+```java
+class CommonResponse<T> {
+	public static <T> CommonResponse<T> success(T data) {
+			return new CommonResponse<>(true, data, null);
+	}
+}
+```
+
+## Raw Type
+
+`Raw Type`은 타입 파라미터가 없는 제네릭 타입을 의미한다. 예를 들면 `List<String>`이 아닌 `List` 타입이다. 자바와 같은 정적 타입 언어의 강점은 프로그램을 실행하기 전에 컴파일 에러를 잡을 수 있다는 것이다. 하지만 Raw Type을 부주의하게 사용하면 런타임 에러를 일으킬 수 있다. 아래 코드는 런타임 에러를 발생시키는 예제이다.
+
+```java
+List<String> good = new ArrayList<>();
+List bad = good;
+// warning: unchecked call to add(E) as a member of the raw type List
+bad.add(1);
+for (String str : good) {
+    System.out.println(str);
+}
+```
+경고가 발생하긴 하지만 컴파일이 되는 코드이다. 하지만 이 코드를 실행하면 java.lang.ClassCastException이 발생한다. 애초에 Raw Type은 자바에 제네릭이 도입되기 전(JDK 5.0 이전) 코드와 호환성을 보장하기 위한 것이다. 정적 타입 언어라는 자바의 강점을 이용하기 위해서 Raw Type을 사용하지 말아야 한다.
+
+
+## Reference
+
+[참고: Youtube [10분 테코톡] 🌱 시드의 제네릭](https://youtu.be/Vv0PGUxOzq0)
+
+[참고: Java Docs [Raw Type]](https://docs.oracle.com/javase/tutorial/java/generics/rawTypes.html)
