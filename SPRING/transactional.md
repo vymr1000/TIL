@@ -1,4 +1,4 @@
-# @Transactional과 동시성
+# @Transactional에 대해서
 
 ## 같은 클래스 내 메소드 호출시 트랜잭션 적용 이슈 
 ### StockService.java
@@ -109,7 +109,9 @@ AOP를 적용하면 스프링은 **대상 객체 대신에 프록시를 스프�
 
 부모 메소드인 트랙잭션만 적용한다고 동시성 문제가 해결되지는 않는데 이유는 프록시에서 커밋하기 전에 다른 스레드가 해당 자원에 접근할 수 있기 때문입니다.
 
-
+<br />
+<br />
+<br />
 
 ## Reference 
 [[Spring] 프록시 내부 호출 문제점](https://hyuuny.tistory.com/186)    
