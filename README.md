@@ -19,6 +19,7 @@
 * [Thread - 쓰레드](https://github.com/nuseehr/TIL/blob/master/JAVA/thread.md)
 * [Generic - 제네릭을 사용하는 이유, 와일드카드](https://github.com/nuseehr/TIL/blob/master/JAVA/generic.md)
 * [Java 8 - Java 8에서 새로운 것들](https://github.com/nuseehr/TIL/blob/master/JAVA/java-eight.md)
+* [Java 동시성 제어](https://github.com/nuseehr/TIL/blob/master/JAVA/concurrency.md)
 
 ## Network
 * [OSI 7 계층](https://github.com/nuseehr/TIL/blob/master/NETWORK/osi7.md)
