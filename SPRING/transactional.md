@@ -94,7 +94,7 @@ System.out.println("Entity Manager contains stock true/false =  " + em.contains(
 > 스프링의 AOP는 프록시를 활용하여 구현을 하고있다. 어떠한 클래스가 AOP 대상일 시 원본 클래스 대신 프록시가 감싸진 클래스가 자동으로 만들어져 프록시 클래스가 빈에 등록이 된다. 이렇게 빈에 등록된 프록시 클래스는 원본 클래스가 호출될 시 자동으로 바꿔서 사용해준다.
 >
 
-<img src="./images/proxy.png" width="600px"/>
+<img src="./images/proxy.png" width="400px"/>
 
 외부메소드인 C에서 A메소드를 호출할 시 프록시가 감싸져있는 A메소드를 호출하게 된다. 반면, 내부 메소드인 B메소드에서 A메소드를 호출할 시 Proxy를 호출하게 되는 게 아닌 직접적으로 A메소드를 호출하여 프록시가 발동하지 못하게 된다.
 
